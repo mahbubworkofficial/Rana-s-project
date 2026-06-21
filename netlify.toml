@@ -1,0 +1,16 @@
+[build]
+  command = "cd rana_client && npm install && npm run build"
+  publish = "rana_client/dist"
+  functions = "netlify/functions"
+
+[[redirects]]
+  # Route all /api/* requests to your backend Express server
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+
+[[redirects]]
+  # Route all other requests to React (for client-side routing)
+  from = "/*"
+  to = "/index.html"
+  status = 200
