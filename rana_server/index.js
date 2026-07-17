@@ -22,7 +22,7 @@ async function run() {
     const OtpCollection = db.collection("otps");
 
     // Ensure TTL index for OTPs (expire after 300 seconds / 5 minutes)
-    await OtpCollection.createIndex({ createdAt: 1 }, { expireAfterSeconds: 300 });
+    OtpCollection.createIndex({ createdAt: 1 }, { expireAfterSeconds: 300 }).catch(console.error);
 
     console.log("MongoDB Connected ✔️");
 
