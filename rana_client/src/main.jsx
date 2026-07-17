@@ -54,6 +54,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+
       {
         path: "add-bill",
         element: (
