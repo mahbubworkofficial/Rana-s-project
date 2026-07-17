@@ -25,7 +25,19 @@ export const Register = () => {
       const from = location.state?.from?.pathname || "/";
       navigate(from, { replace: true });
     } catch (err) {
-      setError(err.message || "Login failed. Please check your credentials.");
+      let friendlyMessage = "Login failed. Please check your credentials.";
+      if (err.code === "auth/invalid-credential" || err.code === "auth/wrong-password" || err.code === "auth/user-not-found") {
+        friendlyMessage = "Incorrect email or password.";
+      } else if (err.code === "auth/invalid-email") {
+        friendlyMessage = "Invalid email format.";
+      } else if (err.code === "auth/user-disabled") {
+        friendlyMessage = "This account has been disabled.";
+      } else if (err.code === "auth/too-many-requests") {
+        friendlyMessage = "Too many failed attempts. Please try again later.";
+      } else if (err.message) {
+        friendlyMessage = err.message;
+      }
+      setError(friendlyMessage);
     } finally {
       setLoading(false);
     }
@@ -64,7 +76,7 @@ export const Register = () => {
   };
 
   return (
-    <div className="card bg-base-100 mx-auto w-full max-w-sm shadow-2xl mt-10 p-4">
+    <div className="card bg-base-100 mx-auto w-full max-w-sm shadow-2xl my-10 p-4">
       <h1 className="text-4xl font-bold text-center pt-4 text-black">Log In</h1>
       <div className="card-body">
         

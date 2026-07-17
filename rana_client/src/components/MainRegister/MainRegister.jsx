@@ -119,7 +119,17 @@ export const MainRegister = () => {
         state: { successMessage: "Registration successful! Please login with your credentials." }
       });
     } catch (err) {
-      setError(err.message);
+      let friendlyMessage = "Registration failed. Please try again.";
+      if (err.code === "auth/email-already-in-use") {
+        friendlyMessage = "This email is already in use.";
+      } else if (err.code === "auth/invalid-email") {
+        friendlyMessage = "Invalid email format.";
+      } else if (err.code === "auth/weak-password") {
+        friendlyMessage = "The password is too weak. Please use a stronger password.";
+      } else if (err.message) {
+        friendlyMessage = err.message;
+      }
+      setError(friendlyMessage);
       setShowOtp(false); // Return to registration form
     }
   };

@@ -123,7 +123,7 @@ const AddBill = () => {
     try {
       // Call backend API to add sample bills
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/bills/sample`,
+        `${import.meta.env.VITE_API_URL}/bills/sample`,
         {
           method: "POST",
           headers: {
