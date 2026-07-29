@@ -153,7 +153,7 @@ export const MainRegister = () => {
   }
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 border rounded-lg shadow bg-base-100">
+    <div className="max-w-md mx-auto my-10 p-6 border rounded-lg shadow bg-base-100">
       <h2 className="text-2xl font-bold mb-4 text-center">Register</h2>
 
       <form onSubmit={handleRegister}>

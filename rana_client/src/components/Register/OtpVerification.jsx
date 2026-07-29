@@ -106,7 +106,7 @@ export const OtpVerification = ({ email, onVerificationSuccess, onCancel, onRese
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 border rounded-lg shadow bg-base-100">
+    <div className="max-w-md mx-auto my-10 p-6 border rounded-lg shadow bg-base-100">
       <h2 className="text-2xl font-bold mb-2 text-center">Enter Verification Code</h2>
       <p className="text-sm text-gray-500 text-center mb-6">
         We've sent a 6-digit verification code to <span className="font-semibold">{email}</span>.
